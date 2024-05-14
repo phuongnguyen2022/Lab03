@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, Image, View, SafeAreaView} from 'react-native';
-import {Button, Text} from 'react-native-paper';
+import React, {useState} from 'react';
+import {FlatList, Image, View, SafeAreaView, Searchbar} from 'react-native';
+import {Button, Text, TextInput} from 'react-native-paper';
 import Styles from './Styles';
 
 const Products = () => {
   const [data, setData] = useState([]);
+  const [value, setValue] = useState('');
   const filePath = 'https://dummyjson.com/products';
 
-  useEffect(() => {
+  const search = () => {
+    if (value != '')
+      filePath = 'https://dummyjson.com/products/search?q=' + value;
     fetch(filePath)
       .then(response => {
         if (!response.ok) {
@@ -19,9 +22,9 @@ const Products = () => {
         setData(d.products);
       })
       .catch(error => {
-        console.error('Error fetching data: ', error);
+        console.error('Error fetching data:', error);
       });
-  }, []);
+  };
 
   const Item = ({data}) => (
     <View style={Styles.block}>
@@ -60,7 +63,12 @@ const Products = () => {
     <SafeAreaView>
       <View>
         <Text style={{fontSize: 30, fontWeight: 'bold', margin: 20}}>
-          Product List
+          Product Search
+        </Text>
+        <TextInput onChangeText={setValue} placeholder="Type here"></TextInput>
+        
+        <Text style={{fontSize: 30, fontWeight: 'bold', margin: 20}}>
+          Product details
         </Text>
       </View>
       <FlatList

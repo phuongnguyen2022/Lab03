@@ -9,6 +9,7 @@ const AppTheme = {
   },
 };
 export default styles = StyleSheet.create({
+  
   block: {
     flex: 1,
     flexDirection: 'row',

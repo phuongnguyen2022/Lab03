@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, View,Alert} from 'react-native';
 import {Button} from 'react-native-paper';
 import Styles from './Styles';
 
@@ -44,61 +44,59 @@ const NewProduct = () => {
         <TextInput
           style={{height: 40}}
           placeholder="Enter title"
-          onChangeText={title}
+          onChangeText={setTitle}
         />
         <Text style={{fontWeight: 'bold'}}>Desciption</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter Desciption"
-          onChangeText={description}
+          onChangeText={setDescription}
         />
         <Text style={{fontWeight: 'bold'}}>Price</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter Price"
-          onChangeText={price}
+          onChangeText={setPrice}
           keyboardType="numeric"
         />
         <Text style={{fontWeight: 'bold'}}>Discount Percentage</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter Discount Percentage"
-          onChangeText={discountPercentage}
+          onChangeText={setDiscountPercentage}
           keyboardType="numeric"
         />
         <Text style={{fontWeight: 'bold'}}>Rating</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter rating"
-          onChangeText={rating}
+          onChangeText={setRating}
         />
         <Text style={{fontWeight: 'bold'}}>Stock</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter stock"
-          onChangeText={stock}
+          onChangeText={setStock}
         />
         <Text style={{fontWeight: 'bold'}}>Brand</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter brand"
-          onChangeText={brand}
+          onChangeText={setBrand}
         />
         <Text style={{fontWeight: 'bold'}}>Category</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter category"
-          onChangeText={category}
+          onChangeText={setCategory}
         />
         <Text style={{fontWeight: 'bold'}}>Images</Text>
         <TextInput
           style={{height: 40}}
           placeholder="Enter images URL(s)"
-          onChangeText={images}
+          onChangeText={setImages}
         />
-        <Button 
-          onPress={() => Alert.alert({handleSubmit})} 
-          style={Styles.button}>
+        <Button onPress={this.handleSubmit} style={Styles.button}>
           <Text style={Styles.buttonText}>SUBMIT</Text>
         </Button>
       </View>
